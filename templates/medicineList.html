@@ -22,6 +22,10 @@
                 <input type="text" class="input-field" placeholder="Medicine Name..." name="name" required>
             </div>
             <div class="item">
+                <h3 class="label">Generic Medicine Name:</h3>
+                <input type="text" class="input-field" placeholder="Generic Name..." name="generic_name" required>
+            </div>
+            <div class="item">
                 <h3 class="label">Category:</h3>
                 <select class="input-field" name="category">
                         <option value="gm">gm</option>
@@ -88,12 +92,20 @@
         <div class="btns">
             <a href="/addMedicine"><button class="medicine-list-btn">Add Medicine</button></a></div>
     </div>
+
+    <div class="search-bar">
+        <h3 class="title-text">Search</h3>
+        <input type="text" name="search" id="search-bar" class="input-field" oninput="filterBySearch(this)">
+    </div>
     <div class="table">
         <table>
             <tr>
                 <!-- <th>sr</th> -->
                 <th>
                     Name
+                </th>
+                <th>
+                    Generic Name
                 </th>
                 <th>
                     Category
@@ -123,6 +135,7 @@
                 <tr id="{{medicine[ 'id']}}">
 
                     <td>{{medicine['name']}}</td>
+                    <td>{{medicine['generic_name']}}</td>
                     <td>{{medicine['category']}}</td>
                     <td>{{medicine['unit']}}</td>
                     <td>{{medicine['details']}}</td>

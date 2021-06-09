@@ -50,6 +50,16 @@
     font-size: larger;
 }
 
+.search-bar {
+    width: 90%;
+    display: flex;
+    /* margin: 2rem; */
+    padding: 0.8rem;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
 h3 {
     text-decoration: none;
     font-weight: 400;

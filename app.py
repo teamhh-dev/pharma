@@ -69,6 +69,7 @@ def addMedicine():
             imageExtensionFlag=True
 
             name=request.form['name']
+            generic_name=request.form['generic_name']
             category=request.form['category']
             unit=request.form['unit']
             details=request.form['details']
@@ -87,7 +88,7 @@ def addMedicine():
             if imageExtensionFlag:
                 if not imageName:
                     imageName="None"
-                if db.addMedicine(name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName):
+                if db.addMedicine(name,generic_name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName):
                     try:
                         image.save(app.config['UPLOAD_FOLDER']+imageName)
                     except Exception as e:
@@ -105,6 +106,7 @@ def medicineList():
     if request.method=="POST":
         id=request.form['ide']
         name=request.form['name']
+        generic_name=request.form['generic_name']
         category=request.form['category']
         unit=request.form['unit']
         details=request.form['details']
@@ -117,7 +119,6 @@ def medicineList():
         print(image.filename)
         if not image.filename:
             print("No Image!")
-            # image.save(app.config['UPLOAD_FOLDER']+imageName)
 
         else:
             path=join(app.config['UPLOAD_FOLDER'],imageName)
@@ -129,9 +130,8 @@ def medicineList():
                 if image.filename:
                     image.save(path)
 
-        db.updateMedicine(name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName,id)
+        db.updateMedicine(name,generic_name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName,id)
         
-    # updated=db.updateMedicine(name,category,unit,detail
     medicines_list=db.getAllMedicines()
     for medicine in medicines_list:
         medicine['image']="medicine-images/"+medicine['image']
@@ -159,38 +159,39 @@ def deleteMedicine():
         return jsonify({"msg":"Deleted Successfully!"})
     else:
         return jsonify({"msg":"Not Deleted Error 404!"})
-@app.route("/updateMedicine",methods=["PUT"])
-def updateMedicine():
-    print("update Call")
-    db=DBHandler(app.config['DB_HOST'],app.config['DB_ID'],app.config['DB_PASSWORD'],app.config['DB_NAME'])
+# @app.route("/updateMedicine",methods=["PUT"])
+# def updateMedicine():
+#     print("update Call")
+#     db=DBHandler(app.config['DB_HOST'],app.config['DB_ID'],app.config['DB_PASSWORD'],app.config['DB_NAME'])
     
-    id=request.form['id']
-    name=request.form['name']
-    category=request.form['category']
-    unit=request.form['unit']
-    details=request.form['details']
-    price=request.form['price']
-    manufacturerName=request.form['manufacturername']
-    manufacturerPrice=request.form['manufacturerprice']
+#     id=request.form['id']
+#     name=request.form['name']
+#     generic_name=request.form['generic_name']
+#     category=request.form['category']
+#     unit=request.form['unit']
+#     details=request.form['details']
+#     price=request.form['price']
+#     manufacturerName=request.form['manufacturername']
+#     manufacturerPrice=request.form['manufacturerprice']
     
-    image=request.files['image']
-    imageName=id+"."+"jpg"
+#     image=request.files['image']
+#     imageName=id+"."+"jpg"
     
-    if image.filename==None:
-        image.save(app.config['UPLOAD_FOLDER']+imageName)
+#     if image.filename==None:
+#         image.save(app.config['UPLOAD_FOLDER']+imageName)
 
-    else:
-        path=join(app.config['UPLOAD_FOLDER'],imageName)
-        remove(path)
-        image.save(path)
+#     else:
+#         path=join(app.config['UPLOAD_FOLDER'],imageName)
+#         remove(path)
+#         image.save(path)
 
-    print(name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName,id)
-    # updated=db.updateMedicine(name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName,id)
+#     print(name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName,id)
+#     # updated=db.updateMedicine(name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName,id)
 
-    if True:
-        return jsonify({"msg":"Updated Successfully!"})
-    else:
-        return jsonify({"msg":"Not Updated Error 404!"})
+#     if True:
+#         return jsonify({"msg":"Updated Successfully!"})
+#     else:
+#         return jsonify({"msg":"Not Updated Error 404!"})
 
 
 @app.route("/getAllMedicines",methods=["GET"])
@@ -198,17 +199,21 @@ def getAllMedicines():
     db=DBHandler(app.config['DB_HOST'],app.config['DB_ID'],app.config['DB_PASSWORD'],app.config['DB_NAME'])
     medicines=db.getAllMedicines()
     return jsonify(medicines)
-    # if medicines:
-    #     return jsonify(medicines)
-    # else:
-    #     return jsonify({"msg":"Not Medicine Found!"})
-
+   
+@app.route("/medicinesFilterByName",methods=["GET"])
+def medicinesFilterByName():
+    db=DBHandler(app.config['DB_HOST'],app.config['DB_ID'],app.config['DB_PASSWORD'],app.config['DB_NAME'])
+    searchInput=request.args.get('search')
+    print(searchInput)
+    filteredMedicines=db.getMedicinesByFilteredNames(searchInput)
+    if filteredMedicines:
+        return jsonify(filteredMedicines)
+    else:
+        return jsonify({"Results":[]})
 
 if __name__ == '__main__':
-    #db=DBHandler(app.config['DB_HOST'],app.config['DB_ID'],app.config['DB_PASSWORD'],app.config['DB_NAME'])
-    #print(db.getAllMedicines())
+    # db=DBHandler(app.config['DB_HOST'],app.config['DB_ID'],app.config['DB_PASSWORD'],app.config['DB_NAME'])
+    # print(db.getMedicinesByFilteredNames(searchInput="Pan"))
     app.run(debug=True)
+
     
-    
-"""<input class="select2-search__field" type="search" tabindex="0" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" autocomplete="off" aria-controls="select2-unit-12-results">
-"""

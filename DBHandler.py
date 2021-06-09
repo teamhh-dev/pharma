@@ -17,7 +17,7 @@ class DBHandler:
         try:
             self.db=pymysql.connect(host=self.host,user=self.user,password=self.password,database=self.database)
             self.cursor=self.db.cursor(DictCursor)
-            self.cursor.execute("CREATE TABLE if not exists `medicine_list` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(100) NOT NULL , `category` VARCHAR(20) NOT NULL , `unit` VARCHAR(20) NOT NULL , `details` VARCHAR(1000) NOT NULL , `price` FLOAT(10,2) NOT NULL , `manufacturer_name` VARCHAR(50) NOT NULL , `manufacturer_price` FLOAT(10,2) NOT NULL , `image` VARCHAR(200) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;")
+            self.cursor.execute("CREATE TABLE if not exists `medicine_list` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(100) NOT NULL ,`generic_name` VARCHAR(100) NOT NULL , `category` VARCHAR(20) NOT NULL , `unit` VARCHAR(20) NOT NULL , `details` VARCHAR(1000) NOT NULL , `price` FLOAT(10,2) NOT NULL , `manufacturer_name` VARCHAR(50) NOT NULL , `manufacturer_price` FLOAT(10,2) NOT NULL , `image` VARCHAR(200) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;")
             self.db.commit()
         except Exception as e:
             raise Exception("<h1>No Db Connection</h1>")
@@ -27,9 +27,9 @@ class DBHandler:
         name=self.cursor.fetchone()
         return name['imagename']
 
-    def addMedicine(self,name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName):
-        query="INSERT INTO `medicine_list` (`id`, `name`, `category`, `unit`, `details`, `price`, `manufacturer_name`, `manufacturer_price`, `image`) VALUES (NULL, %s, %s, %s,%s, %s,%s,%s,%s)"
-        args=(name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName)
+    def addMedicine(self,name,generic_name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName):
+        query="INSERT INTO `medicine_list` (`id`, `name`,`generic_name`, `category`, `unit`, `details`, `price`, `manufacturer_name`, `manufacturer_price`, `image`) VALUES (NULL, %s,%s, %s, %s,%s, %s,%s,%s,%s)"
+        args=(name,generic_name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName)
         try:
             self.cursor.execute(query,args)
             self.db.commit()
@@ -66,9 +66,9 @@ class DBHandler:
             return False
         return True
 
-    def updateMedicine(self,name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName,id):
-        query="UPDATE `medicine_list` set `name`=%s, `category`=%s, `unit`=%s, `details`=%s, `price`=%s, `manufacturer_name`=%s, `manufacturer_price`=%s, `image`=%s where `id`=%s"
-        args=(name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName,id)
+    def updateMedicine(self,name,generic_name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName,id):
+        query="UPDATE `medicine_list` set `name`=%s,`generic_name`=%s,, `category`=%s, `unit`=%s, `details`=%s, `price`=%s, `manufacturer_name`=%s, `manufacturer_price`=%s, `image`=%s where `id`=%s"
+        args=(name,generic_name,category,unit,details,price,manufacturerName,manufacturerPrice,imageName,id)
         try:
             self.cursor.execute(query,args)
             self.db.commit()
@@ -76,3 +76,15 @@ class DBHandler:
             print(e.__str__())
             return False
         return True
+    def getMedicinesByFilteredNames(self,searchInput):
+        query="Select * from `medicine_list` where lower(name) like (%s)"
+        args=("%"+searchInput.lower()+"%")
+        result=None
+        try:
+            self.cursor.execute(query,args)
+            result=self.cursor.fetchall()
+            return result
+        except Exception as e:
+            print(e.__str__())
+            return False
+        
