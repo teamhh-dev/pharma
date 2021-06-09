@@ -1,0 +1,185 @@
+
+.container {
+  overflow-y: visible;
+  overflow-y: scroll;
+}
+
+.boxes {
+  width: 98%;
+  height: 150px;
+  margin-top: 45px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+}
+
+
+.box {
+  width: 25%;
+  height: 130px;
+  background-color: white;
+  position: relative;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.innerBox {
+  width: 80px;
+  height: 80px;
+  margin-left: 20px;
+  margin-top: -20px;
+  position: relative;
+  background-color: black;
+}
+
+.innerBox-1 {
+  background: linear-gradient(to right, #26c6da, #00acc1);
+}
+
+.innerBox-2 {
+  background: linear-gradient(to right, #288c6c, #4ea752);
+}
+
+.innerBox-3 {
+  background: linear-gradient(to right, #d22824, #da3a36);
+}
+
+.innerBox-4 {
+  background: linear-gradient(to right, #f5700c, #ff9800);
+}
+
+
+.label {
+  height: 20px;
+  position: absolute;
+  right: 0;
+  float: right;
+  top: 5px;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 11px;
+  font-family: Arial;
+  color: darkgray;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.amount {
+  height: 23px;
+  position: absolute;
+  right: 0;
+  float: right;
+  top: 28px;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 25px;
+  font-family: Verdana;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+hr {
+  margin: 10px;
+  margin-top: 25px;
+  color: red;
+}
+
+p > a {
+  color: #4ea752;
+  font-style: normal;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+a:hover {
+  color: #26c6da;
+}
+
+.reports,
+.lastMonthsReport {
+  width: 98%;
+  height: 350px;
+  /*height: 350px;*/
+  display: flex;
+  position: relative;
+  margin: 10px;
+}
+
+#progressChart {
+  width: 95%;
+  height : 270px;
+}
+
+.lastMonthsReport {
+  height : 400px;
+}
+
+.monthlyProgressReport {
+  width: 98%;
+  height : 380px;
+  border-radius: 5px;
+  background-color: white;
+  margin: 10px;
+}
+
+.monthlyReport {
+  width: 76%;
+  height : 330px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.dailyReport {
+  width: 24%;
+  height : 330px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.monthlyReportTitle,
+.dailyReportTitle,
+.monthlyProgressTitle {
+  font-size: 20px;
+  color: black;
+  margin-top: 15px;
+  margin-left: 30px;
+  font-family: Arial;
+}
+
+#tReport {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 97%;
+  margin: 5px;
+  color: black;
+}
+
+#tReport td,
+#tReport th {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+#tReport tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#tReport tr:hover {
+  background-color: #ddd;
+}
+
+#tReport th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #106b67;
+  color: white;
+}
+
+#myChart {
+  width: 95%;
+  height: 200px;
+}

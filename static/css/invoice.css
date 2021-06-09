@@ -1,0 +1,156 @@
+
+.invoice {
+    width: 97%;
+    height: 100%;
+    background-color: white;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    overflow: auto;
+    overflow-y: scroll;
+}
+
+.invoiceTile {
+  font-size: 18px;
+  color: black;
+  font-family: Arial;
+}
+
+.invoiceList {
+  float: right;
+  width: 100px;
+  height: 30px;
+  border: none;
+  margin-right: 30px;
+  border-radius: 2px;
+  background-color: #4ea752;
+  margin-top: -8px;
+}
+
+.invoiceDetail {
+  width: 98%;
+  height: auto;
+  margin-left: 10px;
+  margin-top: 35px;
+  padding: 5px;
+}
+
+.row {
+  width: 99%;
+    display: flex;
+}
+
+.cName,
+.cDate,
+.cInvoice,
+.cDetail,
+.cId {
+  width: 50%;
+  height: 13%;
+  margin-top: 15px;
+  flex: 50%;
+
+  /*position: relative;*/
+}
+
+label {
+  font-size: 15px;
+  font-family: Arial;
+  color: black;
+  /*font-weight: bold;*/
+  display: inline-block;
+  width: 35%;
+  text-align: right;
+}
+
+input[type="text"],
+datalist {
+  height: 35px;
+  width: 45%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: Arial;
+  padding: 8px;
+  color: #495057;
+}
+
+input:focus,
+datalist {
+  outline: none;
+  border: 2px solid #4ea752;
+}
+
+.medicineDetail {
+  width: 97%;
+  height: 300px;
+  /*background-color: #d22824;*/
+}
+
+table {
+  width: 100%;
+  color: black;
+  border-spacing: 2px;
+  text-align: center;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th {
+  /*background-color: #106b67;*/
+  font-weight: bolder;
+}
+
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 1px;
+}
+button {
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.invoiceList {
+  float: right;
+  width: 100px;
+  height: 30px;
+  border: none;
+  margin-right: 30px;
+  border-radius: 2px;
+  background-color: #4ea752;
+  margin-top: -8px;
+}
+
+.save,
+.cancel {
+  width: 80px;
+  height: 30px;
+  width: 80px;
+  margin-top: 30px;
+  border: none;
+}
+
+.save {
+  background-color: #106b67;
+  margin-right: 10px;
+  float: right;
+  margin-top: 30px;
+}
+
+.cancel {
+  background-color: #ff9800;
+  float: right;
+  margin-top: 30px;
+  margin-right: 120px;
+}
+
+.deleteIcon,
+.addIcon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}

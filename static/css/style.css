@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    position: relative;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #106b67;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    width: fit-content;
+    width: -moz-fit-content;
+}
+
+.navbar:hover {
+    width: fit-content;
+}
+
+.complete {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    position: relative;
+    /* top: 1rem; */
+    width: 95%;
+    height: 100vh;
+    background-color: #d4d4d4;
+    color: rebeccapurple;
+    float: right;
+    overflow-y: scroll;
+    /*display: flex;*/
+}
+
+
+
+.nav-item {
+    position: relative;
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.dropdown-content {
+    right: 0;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.nav-item:hover .dropdown-content {
+    display: block;
+}
+
+.white {
+    color: white;
+}
+
+.show-menu {
+    position: relative;
+    left: 70%;
+    display: none;
+}
+
+.nav-item-text {
+    font-size: 1rem;
+    font-family: Aspira;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 1rem;
+    color: rgb(248, 248, 248);
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.show-mobile {
+    display: block;
+    /* transition: 0.2s linear;
+    justify-content: center; */
+}
+
+i {
+    color: rgb(218, 218, 218);
+}
+
+
+@media screen and (max-width: 780px) {
+    body {
+        background-color: lightgreen;
+    }
+    .navbar {
+        width: fit-content;
+    }
+    .show-menu {
+        display: block;
+        position: initial;
+        margin: 2rem auto;
+    }
+    .nav-item {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+

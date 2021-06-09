@@ -1,0 +1,223 @@
+{% extends "index.html" %} {% block content %} {% block style %}
+
+<link rel="stylesheet" href="{{url_for('static',filename='css/addPurchase.css')}}">{% endblock %}
+
+
+    <style>
+    .deleteIcon {
+    background-image: url("{{url_for('static',filename='img/delete.png')}}");
+}
+    </style>
+
+    <div class="purchase">
+                <div class="purchaseTitle">
+                    Add Purchase
+
+                </div>
+
+                <hr>
+                <div class="purchaseDetail">
+                    <div class="purchaseInfo">
+                         <form action="#" method="post">
+                        <div class="row">
+                            <div class="manufacrer">
+                                <label>
+                                    Manufacturer :
+                                </label>
+                                <input type="text" list = "manufac" value="Walking Customer">
+                                <datalist id="manufac">
+                                  <option value="Edge">
+                                  <option value="Firefox">
+                                  <option value="Chrome">
+                                  <option value="Opera">
+                                  <option value="Safari">
+                                </datalist>
+                            </div>
+                            <div class="cDate">
+                                <label>
+                                    Date :
+                                </label>
+                                <input type="text" value="05-19-2021" style="background-color: #e9ecef" disabled>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="cInvoice">
+                                <label>
+                                    Invoice No :
+                                </label>
+                                <input type="text" value="1016" style="background-color: #e9ecef" disabled>
+                            </div>
+                            <div class="cDetail">
+                                <label>
+                                    Details :
+                                </label>
+                                <input type="text">
+                            </div>
+
+                        </div>
+
+
+                    </form>
+
+                    </div>
+
+                    <div class="medicineDetail">
+                        <table id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>Medicine Name</th>
+                                    <th>Avail Qty</th>
+                                    <th>Leaf Pattern</th>
+                                    <th>Expiry Date</th>
+                                    <th>Quantity</th>
+                                    <th>Purchase Price</th>
+                                    <th>Sale Price</th>
+                                    <th>Discount (%)</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                           <input class="inputInvoice" list="inputInvoice" type="text" placeholder="Medicine Name" style="width: 99%">
+                                            <datalist id="inputInvoice">
+                                                  <option value="Edge">
+                                                  <option value="Firefox">
+                                                  <option value="Chrome">
+                                                  <option value="Opera">
+                                                  <option value="Safari">
+                                            </datalist>
+
+                                        </td>
+                                        <td>
+                                            <input type="text" class="inputInvoice" style="width: 99%; background-color: #e9ecef" disabled>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="inputInvoice" style="width: 99%;">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="inputInvoice" style="width: 99%;">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="inputInvoice" style="width: 99%">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="inputInvoice" style="width: 99%;">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="inputInvoice" style="width: 99%">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="inputInvoice" style="width: 99%;">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="inputInvoice" style="width: 99%; background-color: #e9ecef" disabled>
+                                        </td>
+                                        <td>
+                                            <input type="button" class="deleteIcon" class="delBtn" onclick="removeRow(this)" style="border: none;">
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+
+                            <tfooter>
+                                <tr>
+                                    <td colspan="7">
+                                    </td>
+                                    <td>
+                                        Invoice Discount:
+                                    </td>
+                                    <td>
+                                        <input type="text" style="width: 99%">
+                                    </td>
+                                    <td>
+                                        <input type="button" class="addIcon" id="addRow" style="border: none; background-image: url({{url_for('static',filename='img/add.png')}})">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="7">
+                                    </td>
+                                    <td>
+                                        Total Discount:
+                                    </td>
+                                    <td>
+                                        <input type="text" style="width: 99%; background-color: #e9ecef" disabled>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="7">
+                                    </td>
+                                    <td>
+                                        Total Amount:
+                                    </td>
+                                    <td>
+                                        <input type="text" style="width: 99%; background-color: #e9ecef" disabled>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="7">
+                                    </td>
+                                    <td>
+                                        Previous:
+                                    </td>
+                                    <td>
+                                        <input type="text" style="width: 99%; background-color: #e9ecef" disabled>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="7">
+                                    </td>
+                                    <td>
+                                        Net Total:
+                                    </td>
+                                    <td>
+                                        <input type="text" style="width: 99%; background-color: #e9ecef" disabled>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="7">
+                                    </td>
+                                    <td>
+                                        Amount Paid:
+                                    </td>
+                                    <td>
+                                        <input type="text" style="width: 99%">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="7">
+                                    </td>
+                                    <td>
+                                        Due Amount:
+                                    </td>
+                                    <td>
+                                        <input type="text" style="width: 99%; background-color: #e9ecef" disabled>
+                                    </td>
+                                </tr>
+                            </tfooter>
+                        </table>
+
+                        <button class="cancel">
+                                Cancel
+                        </button>
+                        <button class="save">
+                                Save
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+    </div>
+
+
+
+
+  <script src="{{url_for('static',filename='js/addPurchase.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "index.html" %} {% block content %}{% block style %}
+
+<link rel="stylesheet" href="{{url_for('static',filename='css/returnList.css')}}">{% endblock %}
+<div class="data-container">
+    <div class="heading-data-container">
+        <h2>Invoice Return List
+
+        </h2>
+    </div>
+    <div class="container">
+        <div class="input-container">
+
+            <form action="" method="POST" class="form">
+                <div class="for-start-date">
+                    <div class="sDateLabel">Start Date</div>
+                    <input type="date" class="input-Sdate">
+                </div>
+                <div class="for-end-date">
+
+                    <div class="sDateLabel">Start Date</div>
+                    <input type="date" class="input-edate">
+                    <input type="submit" value="Find" class="find-btn">
+                </div>
+                <div class="search-bar">
+
+                    <input type="text" class="input-edate" placeholder="Search">
+
+
+
+
+                </div>
+
+            </form>
+        </div>
+        <div class="table-data">
+            <table style="width:100%">
+                <tr>
+                    <th style="text-align:center">Sr#</th>
+                    <th style="text-align:center">Invoice Id</th>
+                    <th style="text-align:center">Customer Name</th>
+                    <th style="text-align:center">Date</th>
+                    <th style="text-align:center">Total Amount</th>
+                    <th style="text-align:center">Action</th>
+                </tr>
+                <tr>
+                    <td>Jill</td>
+                    <td>Smith</td>
+                    <td>50</td>
+                    <td>Jill</td>
+                    <td>Smith</td>
+                    <td>
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Eve</td>
+                    <td>Jackson</td>
+                    <td>94</td>
+                    <td>Jill</td>
+                    <td>Smith</td>
+                    <td>
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td colspan="4" style="text-align:right">Total</td>
+                    <td style="text-align:right">$142.2</td>
+                    <td></td>
+
+                </tr>
+            </table>
+
+        </div>
+        <div class="bottom-container">
+            <div class="entries-counter">
+                <h4>Showing 1 to 2 of 2 entries </h4>
+
+            </div>
+            <div class="paginator">
+                <h4><a href="">Previus</a>
+                    <a href="" class="active">1</a>
+                    <a href="">2</a>
+
+
+
+                    <a href="">Next</a></h4>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="https://pharmacyv5.bdtask.com/pharmacare-9.4_demo/assets/plugins/typicons/src/typicons.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> {% block style %}{% endblock %}
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrapper" id="sidebar">
+
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <a href="#" class="sidebar-brand"><img src="{{url_for('static',filename='img/logo.png')}}" class="sidebar-brand_icon" alt="">
+                    <span class="sidebar-brand_text">pharmacare</span>
+                </a>
+            </div>
+            <div class="profile-element">
+                <div class="avatar">
+                    <img src="{{url_for('static',filename='img/profile.jpeg')}}" height="50" class="img-fluid" alt="">
+                </div>
+                <div class="profile-text">
+                    <p class="user">Admin</p>
+
+                </div>
+            </div>
+            <div class="sidebar-body">
+                <nav class="sidebar-nav">
+                    <ul class="metismenu" id="manuBar">
+                        <li class="mm-active nav-itms">
+                            <a href="{{ url_for('home') }}" class="mm-active">
+                                <i class="fas fa-tachometer-alt-slowest"></i> Dashboard
+                            </a>
+                        </li>
+
+
+
+                        <li class="">
+                            <a class="nav-itms" href="#">
+                                <i class="fa fa-industry" aria-hidden="true"></i>
+                                </i>Manufact<i class='bx bxs-chevron-down'></i>
+                            </a>
+                            <ul class="sub-nav-manue">
+                                <li class=""><a href="">Add Manufacturer</a></li>
+                                <li class=""><a href=""> Manufacturer List</a></li>
+
+                            </ul>
+                        </li>
+
+
+                        <li class="">
+                            <a class="nav-itms" href="#">
+                                <i class="fas fa-pills"></i> <span>Medicine</span> <i class='bx bxs-chevron-down'></i>
+                            </a>
+                            <ul class="sub-nav-manue">
+                                <li class=""><a href="{{ url_for('addMedicine') }}"> Add Medicine</a></li>
+                                <li class=""><a href="{{ url_for('medicineList') }}"> Medicine List</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="">
+                            <a class="nav-itms" href="#">
+                                <i class='bx bxs-cart-download'></i></i>Purchase<i class='bx bxs-chevron-down'></i>
+                            </a>
+                            <ul class="sub-nav-manue">
+                                <li class=""><a href="{{ url_for('addPurchase') }}">Add Purchase</a></li>
+                                <li class=""><a href="{{ url_for('purchaseList') }}"> Purchase List</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="">
+                            <a class="nav-itms" href="#">
+                                <i class="fad fa-badge-dollar"></i></i> Invoice<i class='bx bxs-chevron-down'></i>
+                            </a>
+                            <ul class="sub-nav-manue">
+
+                                <li class=""><a href="{{ url_for('addInvoice') }}">POS Invoice</a></li>
+                                <li class=""><a href="{{ url_for('invoiceList') }}"> Invoice List</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="">
+                            <a class="nav-itms" href="#">
+                                <i class="fas fa-retweet mr-2"></i> Return<i class='bx bxs-chevron-down'></i>
+                            </a>
+                            <ul class="sub-nav-manue">
+                                <li class=""><a href="">Add Return</a></li>
+                                <li class=""><a href="{{ url_for('return_list') }}">Invoice Return List</a></li>
+                                <li class=""><a href="">Manufacturer Return List</a></li>
+
+                            </ul>
+                        </li>
+
+
+                        <li class="">
+                            <a class="nav-itms" href="#">
+                                <i class="fab fa-linode mr-3"></i> Stock<i class='bx bxs-chevron-down'></i>
+                            </a>
+                            <ul class="sub-nav-manue">
+
+
+                                <li class=""><a href="{{ url_for('availableStock') }}"> Available Stock</a></li>
+                            </ul>
+                        </li>
+
+
+
+
+                        <li class="">
+                            <a class="nav-itms" href="#">
+                                <i class="fas fa-book-open mr-2"></i> Report<i class='bx bxs-chevron-down'></i>
+                            </a>
+                            <ul class="sub-nav-manue">
+                                <li class=""><a href="">Sales Report</a></li>
+                                <li class=""><a href="">Purchase Report</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a class="nav-itms" href="#">
+                                <i class="fas fa-users mr-2"></i> Employee<i class='bx bxs-chevron-down'></i>
+                            </a>
+                            <ul class="sub-nav-manue">
+                                <li class=""><a href="">Add Employee</a></li>
+                                <li class=""><a href="">Employee List</a></li>
+
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </div>
+    <div class="content-wrapper" id="main-content">
+        <div class="main-content">
+
+            <div class="top-navbar">
+                <div class="left-icon">
+                    <span onclick="sidebarToggle()" id="toggleBtn"><i class="far fa-bars left-i"></i></span>
+
+
+                    </i>
+                </div>
+                <div class="right-icon">
+                    <a class="topIcontnotify" href=""><i class='bx bxs-bell-ring'></i><span class="icon-data">4</span></a>
+                    <a class="topIcontnotify" href=""> <i class="fas fa-exclamation-triangle"></i><span class="icon-data">4</span></a>
+                    <a class="topIcontnotify" href=""><i class='bx bxs-user-plus'></i>
+                      
+                     </a>
+
+                    <!--<div class="dropDowninfo">
+
+                    <div class="profile-header">
+                        <img src="profile.jpeg" height="10px" class=".user-img" alt="">
+                        <span class="role">Admin User</span>
+                        <span class="user-gmail">BCSF18A012@pucit.edu.pk</span>
+                    </div>
+                    <hr>
+                    <div class="logout-btn">
+                        <a href="" class="logout-user">
+                            Logout
+                        </a>
+                    </div>
+                </div>-->
+                </div>
+
+
+
+
+            </div>
+
+            <div class="grand-container">
+                {% block content %}{% endblock %}
+
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <script>
+        function removeClass(j) {
+
+            var getParent = document.getElementById('manuBar')
+
+            var i = 0;
+            var node = getParent.childNodes[1]
+            while (node) {
+
+                var removeManu = node.lastElementChild
+                var rott = node.firstElementChild
+                var validtetxt = rott.text
+                if (rott.childNodes[1].classList.contains('Rotation360') && validtetxt != j) {
+                    rott.childNodes[1].classList.toggle('Rotation360')
+                }
+
+                if (removeManu.classList.contains('showSubManu') && validtetxt != j) {
+
+                    if (rott.tagName == 'A') {
+
+                        rott = rott.firstElementChild
+                    }
+
+                    //rott.classList.toggle('Rotation360')
+                    removeManu.classList.toggle('showSubManu');
+                }
+                node = node.nextElementSibling
+
+                i = i + 1;
+            }
+
+        }
+
+
+
+
+
+        const d = document.getElementsByClassName('nav-itms');
+        var i;
+        for (i = 0; i < d.length; i++) {
+
+            d[i].addEventListener('click', function() {
+                var tabname;
+                var collaps;
+                if (this.tagName == 'LI') {
+
+                    var gg = this.childNodes[1]
+                    tabname = gg.text;
+                } else {
+                    tabname = this.text
+
+                }
+                removeClass(tabname)
+                collaps = this.nextElementSibling;
+
+                var getchildparent = this.parentNode
+                var getallChild = getchildparent.parentNode;
+                var txt = this.text
+                if (txt == null) {
+                    txt = 'Dashboard'
+                }
+                //
+
+                collaps.classList.toggle('showSubManu')
+                    //collaps.classList.toggle('active')
+
+                const rotate = collaps.previousElementSibling;
+
+                const rot = rotate.lastElementChild
+
+                var rott = rotate.firstElementChild
+                if (rott.tagName == 'A') {
+
+
+                    rott = rott.firstElementChild
+                }
+
+                rott.classList.toggle('Rotation360')
+
+
+                if (rot.tagName == 'I') {
+
+                    rot.classList.toggle('rotateIcon')
+                }
+
+
+
+            })
+        }
+    </script>
+    <script>
+        function sidebarToggle() {
+
+            const d = document.getElementById('sidebar');
+
+            d.classList.toggle('hideSideBar')
+
+            const con = document.getElementById('main-content');
+
+            con.classList.toggle('fullShow')
+
+        }
+    </script>
+    <script>
+    </script>
+    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+
+</body>
+
+</html>

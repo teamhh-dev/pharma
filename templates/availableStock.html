@@ -1,0 +1,62 @@
+{% extends "index.html" %} {% block content %} {% block style %}
+
+<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='css/availableStock.css')}}"> {% endblock %}
+
+
+
+<div class="complete">
+
+
+    <div class="container">
+        <div class="mainContainer">
+            <div class="stockTitle">
+                Available Stock :
+            </div>
+            <hr>
+            <div class="searchBox">
+                <form action="#">
+                    <label>
+                        Search
+                    </label>
+                    <input name="search"></input>
+                </form>
+            </div>
+
+            <table border="1px solid black">
+                <tr>
+                    <th>ID</th>
+                    <th>Medicine Name</th>
+                    <th>Manufacturer Name</th>
+                    <th>Purchase Price</th>
+                    <th>Sale Price</th>
+                    <th>Items Purchased</th>
+                    <th>Items Sold</th>
+                    <th>Available</th>
+                    <th>Total Stock Price</th>
+                </tr>
+                {% if stockList %} {% for stock in stockList %}
+                <tr>
+                    <td>{{ stock['id'] }}</td>
+                    <td>{{ stock['medicineName'] }}</td>
+                    <td>{{ stock['manufacturer'] }}</td>
+                    <td>{{ stock['salePrice'] }}</td>
+                    <td>{{ stock['purchasePrice'] }}</td>
+                    <td>{{ stock['purchased'] }}</td>
+                    <td>{{ stock['soledOut'] }}</td>
+                    <td>{{ stock['available'] }}</td>
+                    <td>{{ stock['stockSalePrice'] }}</td>
+                </tr>
+                {% endfor %} {%endif%}
+
+
+            </table>
+
+
+        </div>
+
+    </div>
+
+    <script src="./index.js"></script>
+</div>
+{%endblock%}

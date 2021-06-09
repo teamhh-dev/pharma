@@ -1,0 +1,188 @@
+{% extends "index.html" %} {% block content %}
+    <div class="container">
+
+        <div class="boxes">
+            <div class="box box-1">
+                <div class="innerBox innerBox-1">
+                    <img src="{{url_for('static',filename='img/conference-48.png')}}" alt="user" style="margin: 15px">
+                </div>
+                <div class="label">
+                    TOTAL CUSTOMER
+
+                </div>
+                <div class="amount">
+                    20
+                </div>
+                <hr/>
+                <p class="detail">
+                    <a href="#"> Show Details </a>
+                </p>
+
+            </div>
+            <div class="box box-2">
+                <div class="innerBox innerBox-2">
+                    <img src="{{url_for('static',filename='img/pill.png')}}" alt="user" style="margin: 8px">
+                </div>
+                <div class="label">
+                    TOTAL MEDICINE
+
+                </div>
+                <div class="amount">
+                    40
+                </div>
+                <hr/>
+                <p class="detail">
+                    <a href="#"> Show Details </a>
+                </p>
+
+            </div>
+            <div class="box box-3">
+                <div class="innerBox innerBox-3">
+                    <img src="{{url_for('static',filename='img/line-chart.png')}}" alt="user" style="margin: 8px">
+                </div>
+                <div class="label">
+                    OUT OF STOCK
+
+                </div>
+                <div class="amount">
+                    10
+                </div>
+                <hr/>
+                <p class="detail">
+                    <a href="#"> Show Details </a>
+                </p>
+            </div>
+            <div class="box box-4">
+                <div class="innerBox innerBox-4">
+                    <img src="{{url_for('static',filename='img/clock.png')}}" alt="user" style="margin: 8px">
+                </div>
+                <div class="label">
+                    EXPIRED MEDICINE
+
+                </div>
+                <div class="amount">
+                    2
+                </div>
+                <hr/>
+                <p class="detail">
+                    <a class="detail" href="#"> Show Details </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="reports">
+
+            <div class="monthlyReport">
+                <div class="monthlyReportTitle">
+                    Best Sales of Month
+                </div>
+                <hr/>
+
+                <canvas id="myChart" height="230px"></canvas>
+                <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Panadol', 'Nospa', 'Entamizole', 'Imodium', 'Arinac', 'Sitaglumet'],
+                            datasets: [{
+                                label: 'Quantity Sold',
+                                data: [12, 19, 3, 5, 2, 3],
+                                backgroundColor: [
+                                    'rgba(169,169,169, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(169,169,169, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
+
+            </div>
+
+            <div class="dailyReport">
+                <div class="dailyReportTitle">
+                    Today's Report
+                </div>
+                <hr/>
+                <table id="tReport">
+                    <tr>
+                        <th>Today's Report</th>
+                        <th>Amount</th>
+                    </tr>
+                    <tr>
+                        <td>Total Sales</td>
+                        <td>23.31</td>
+                    </tr>
+                    <tr>
+                        <td>Total Purchase</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Cash Received</td>
+                        <td>19</td>
+                    </tr>
+                    <tr>
+                        <td>Balance</td>
+                        <td>4.31</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="lastMonthsReport">
+            <div class="monthlyProgressReport">
+                <div class="monthlyProgressTitle">
+                    Monthly Progress Report
+                </div>
+                <hr/>
+                <canvas id="progressChart" height="270px"></canvas>
+                <script>
+                    var ctx = document.getElementById('progressChart').getContext('2d');
+                    var progressChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['May-20', 'June-20', 'July-20', 'Aug-20', 'Sep-20', 'Oct-20', 'Nov-20', 'Dec-20', 'Jan-21', 'Feb-21', 'Mar-21', 'Apr-21'],
+                            datasets: [{
+                                label: 'Sale',
+                                data: [25000, 70000, 40000, 54000, 120100, 65489, 74329, 59976, 97538, 79865, 127846, 65479],
+                                backgroundColor: [
+                                    'rgba(16,107,103, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(16,107,103, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{{url_for('static',filename='js/index.js')}}"></script>
+{% endblock %}
+{% block style %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='css/dashboard.css')}}">
+{% endblock %}

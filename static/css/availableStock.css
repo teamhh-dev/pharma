@@ -1,0 +1,42 @@
+.mainContainer {
+    width: 97%;
+    height: 900px;
+    background-color: white;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.stockTitle {
+    font-size: 17px;
+    color: black;
+    font-family: Arial;
+}
+
+.searchBox {
+    margin-top: 30px;
+}
+
+label {
+    font-size: 15px;
+    font-family: Arial;
+    color: black;
+    /*font-weight: bold;*/
+    width: 130px;
+    text-align: right;
+}
+
+input {
+    height: 35px;
+    width: 30%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial;
+    padding: 8px;
+    color: #495057;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid #4ea752;
+}
